@@ -533,7 +533,7 @@ public class Main {
                     System.out.println("]");
                     break;
 
-                case 20:
+                case 20: // Удаление негативных чисел из массива
                     System.out.print("Задача 4.10. Введите массив в формате [1,2,3,...]: ");
                     String input6 = scanner.next();
                     if (!input6.matches("\\[(-?\\d+,?)+\\]")) { // Проверка корректности ввода массива
