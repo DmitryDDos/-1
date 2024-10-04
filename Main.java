@@ -230,21 +230,28 @@ public class Main {
             }
 
             switch (d) {
-                case 0:
+                case 0: // Остановка программы
                     System.out.println("Программа остановлена.");
                     return;
-                case 1:
+
+                case 1: // Сложение последних 2 цифр числа
                     System.out.print("Задача 1.2. Введите число x: ");
-                    while (!scanner.hasNextInt()) {
+                    while (!scanner.hasNextInt()) { // Проверка корректности ввода
                         System.out.print("Ошибка! Введите целое число: ");
                         scanner.next(); // Очистка ввода
                     }
                     int x = scanner.nextInt();
+                    int length = String.format("%d", x).length(); // Преобразуем число в строку для нахождения длины числа
+                    if (length < 2){ // Если число как минимум не двузначное, то выводит ошибку
+                        System.out.println("Введённое число должно быть как минимум двузначным");
+                        break;
+                    }
                     System.out.println("Результат суммы: " + main.sumLastNums(x));
                     break;
-                case 2:
+
+                case 2: // Проверка положительности числа
                     System.out.print("Задача 1.4. Введите число x: ");
-                    while (!scanner.hasNextInt()) {
+                    while (!scanner.hasNextInt()) { // Проверка корректности ввода
                         System.out.print("Ошибка! Введите целое число: ");
                         scanner.next(); // Очистка ввода
                     }
@@ -252,114 +259,214 @@ public class Main {
                     System.out.println("Положительность числа: " + main.isPositive(x1));
                     break;
 
-                case 3:
+                case 3: // Проверка заглавности английской буквы
                     System.out.print("Задача 1.6. Введите английскую букву: ");
                     String input = scanner.next();
-                    if (input.length() != 1 || !Character.isLetter(input.charAt(0))) {
+                    if (input.length() != 1 || !Character.isLetter(input.charAt(0))) { // Проверка корректности ввода
                         System.out.println("Введено неверное значение! Введите букву.");
                         continue;
                     }
                     char x2 = input.charAt(0);
                     System.out.println("Большая ли буква:  " + main.isUpperCase(x2));
                     break;
-                case 4:
+
+                case 4: // Проверка делимости нацело a на b || b на a
                     System.out.print("Задача 1.8. Введите a и b: ");
+                    while (!scanner.hasNextInt()) { // Проверка для первого числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int a = scanner.nextInt();
+                    while (!scanner.hasNextInt()) { // Проверка для второго числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int b = scanner.nextInt();
                     System.out.println("Делится ли a на b || b на a:  " + main.isDivisor(a, b));
                     break;
-                case 5:
+
+                case 5: // Сумма последних цифр пяти чисел
                     System.out.print("Задача 1.10. Введите пять чисел: ");
                     int[] numbers = new int[5];
                     for (int i = 0; i < 5; i++) {
+                        while (!scanner.hasNextInt()) { // Проверка корректности ввода
+                            System.out.print("Ошибка! Введите целое число: ");
+                            scanner.next(); // Очистка ввода
+                        }
                         numbers[i] = scanner.nextInt();
                     }
                     int result = 0;
-                    for (int num : numbers) {
+                    for (int num : numbers) { // Заносим значения из массива в метод
                         result = main.lastNumSum(result, num);
                     }
                     System.out.println("Результат суммы последних цифр: " + result);
                     break;
-                case 6:
+
+                case 6: // Безопасное деление
                     System.out.print("Задача 2.2. Введите x и y: ");
+                    while (!scanner.hasNextInt()) { // Проверка первого числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x3 = scanner.nextInt();
+                    while (!scanner.hasNextInt()) { // Проверка второго числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int y = scanner.nextInt();
                     System.out.println("Результат деления: " + main.safeDiv(x3, y));
                     break;
-                case 7:
+
+                case 7: // Сравнение двух чисел
                     System.out.print("Задача 2.4. Введите x и y: ");
+                    while (!scanner.hasNextInt()) { // Проверка первого числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x4 = scanner.nextInt();
+                    while (!scanner.hasNextInt()) { // Проверка второго числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int y1 = scanner.nextInt();
                     System.out.println("Результат сравнения: " + main.makeDecision(x4, y1));
                     break;
-                case 8:
+
+                case 8: // Тройная сумма
                     System.out.print("Задача 2.6. Введите x, y и z: ");
+                    while (!scanner.hasNextInt()) { // Проверка первого числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x5 = scanner.nextInt();
+                    while (!scanner.hasNextInt()) { // Проверка второго числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int y2 = scanner.nextInt();
+                    while (!scanner.hasNextInt()) { // Проверка третьего числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int z = scanner.nextInt();
                     System.out.println("Результат сравнения суммы 1 и 2 числа с 3-м: " + main.sum3(x5, y2, z));
                     break;
-                case 9:
+
+                case 9: // Корректный вывод возраста
                     System.out.print("Задача 2.8. Введите x: ");
+                    while (!scanner.hasNextInt()) { // Проверка корректности ввода
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x6 = scanner.nextInt();
                     System.out.println("Возраст: " + main.age(x6));
                     break;
-                case 10:
+
+                case 10: // Корректный вывод дня недели
                     System.out.print("Задача 2.10. Введите день недели: ");
                     String day = scanner.next();
                     main.printDays(day);
                     break;
-                case 11:
+
+                case 11: // Вывод чисел от заданного до 0
                     System.out.print("Задача 3.2. Введите x: ");
+                    while (!scanner.hasNextInt()) { // Проверка корректности ввода
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x8 = scanner.nextInt();
                     System.out.println("Результат: " + main.reverseListNums(x8));
                     break;
-                case 12:
+
+                case 12: // Возведение x в степень y
                     System.out.print("Задача 3.4. Введите x, y: ");
+                    while (!scanner.hasNextInt()) { // Проверка первого числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x9 = scanner.nextInt();
+                    while (!scanner.hasNextInt()) { // Проверка второго числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int y3 = scanner.nextInt();
                     System.out.println("Результат: " + main.pow(x9, y3));
                     break;
-                case 13:
+
+                case 13: // Одинаковость
                     System.out.print("Задача 3.6. Введите x: ");
+                    while (!scanner.hasNextInt()) { // Проверка корректности ввода
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x10 = scanner.nextInt();
                     System.out.println("Результат: " + main.equalNum(x10));
                     break;
-                case 14:
+
+                case 14: // Вывод левого треугольника
                     System.out.print("Задача 3.8. Введите x: ");
+                    while (!scanner.hasNextInt()) { // Проверка корректности ввода
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x11 = scanner.nextInt();
                     main.leftTriangle(x11);
                     break;
-                case 15:
+
+                case 15: // Угадай-ка
                     System.out.println("Задача 3.10. Начало игры!");
                     main.guessGame();
                     break;
-                case 16:
-                    System.out.print("Задача 4.2. Введите массив в формате [1,2,3,...] и число x: ");
+
+                case 16: // Поиск числа x в массиве
+                    System.out.print("Задача 4.2. Введите массив в формате [1,2,3,...]: ");
                     String input1 = scanner.next();
-                    String[] parts = input1.substring(1, input1.length() - 1).split(",");
+                    if (!input1.matches("\\[(-?\\d+,?)+\\]")) { // Проверка корректности ввода массива
+                        System.out.println("Ошибка! Неверный формат массива. Ожидался формат [1,2,3,...]");
+                        break;
+                    }
+                    String[] parts = input1.substring(1, input1.length() - 1).split(","); // Преобразование массива из строки в integer
                     int[] arr = new int[parts.length];
                     for (int i = 0; i < parts.length; i++) {
                         arr[i] = Integer.parseInt(parts[i].trim());
+                    }
+                    System.out.print("Введите число х: ");
+                    while (!scanner.hasNextInt()) { // Проверка корректности ввода
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
                     }
                     int x12 = scanner.nextInt();
                     int result1 = main.findLast(arr, x12);
                     if (result1 == -1) {
                         System.out.println("Число x не найдено в массиве.");
-                    }
-                    else {
+                    } else {
                         System.out.println("Последнее вхождение числа x в массиве находится по индексу " + result1);
                     }
                     break;
-                case 17:
-                    System.out.print("Задача 4.4. Введите массив в формате [1,2,3,...], число x и позицию pos: ");
+
+                case 17: // Вставка числа x в массив на позицию pos
+                    System.out.print("Задача 4.4. Введите массив в формате [1,2,3,...]: ");
                     String input2 = scanner.next();
-                    String[] parts1 = input2.substring(1, input2.length() - 1).split(",");
+                    if (!input2.matches("\\[(-?\\d+,?)+\\]")) { // Проверка корректности ввода массива
+                        System.out.println("Ошибка! Неверный формат массива. Ожидался формат [1,2,3,...]");
+                        break;
+                    }
+                    String[] parts1 = input2.substring(1, input2.length() - 1).split(","); // Преобразование массива из строки в integer
                     int[] arr1 = new int[parts1.length];
                     for (int i = 0; i < parts1.length; i++) {
                         arr1[i] = Integer.parseInt(parts1[i].trim());
                     }
+                    System.out.print("Введите число х: ");
+                    while (!scanner.hasNextInt()) { // Проверка первого числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int x13 = scanner.nextInt();
+                    System.out.print("Введите позицию pos: ");
+                    while (!scanner.hasNextInt()) { // Проверка второго числа
+                        System.out.print("Ошибка! Введите целое число: ");
+                        scanner.next(); // Очистка ввода
+                    }
                     int pos = scanner.nextInt();
                     int[] result2 = main.add(arr1, x13, pos);
                     System.out.println("Результат: ");
@@ -368,56 +475,85 @@ public class Main {
                     }
                     System.out.println();
                     break;
-                case 18:
+
+                case 18: // Реверс массива
                     System.out.print("Задача 4.6. Введите массив в формате [1,2,3,...]: ");
                     String input3 = scanner.next();
-                    String[] parts2 = input3.substring(1, input3.length() - 1).split(",");
+                    if (!input3.matches("\\[(-?\\d+,?)+\\]")) { // Проверка корректности ввода массива
+                        System.out.println("Ошибка! Неверный формат массива. Ожидался формат [1,2,3,...]");
+                        break;
+                    }
+                    String[] parts2 = input3.substring(1, input3.length() - 1).split(","); // Преобразование массива из строки в integer
                     int[] arr2 = new int[parts2.length];
                     for (int i = 0; i < parts2.length; i++) {
                         arr2[i] = Integer.parseInt(parts2[i].trim());
                     }
-                    main.reverse(arr2);
-                    System.out.println("Результат: ");
-                    for (int num : arr2) {
-                        System.out.print(num + " ");
+                    main.reverse(arr2); // Сам реверс массива
+                    System.out.print("Результат: [");
+                    for (int i = 0; i < arr2.length; i++) {
+                        System.out.print(arr2[i]);
+                        if (i < arr2.length - 1) {
+                            System.out.print(",");
+                        }
                     }
-                    System.out.println();
+                    System.out.println("]");
                     break;
-                case 19:
-                    System.out.print("Задача 4.8. Введите два массива в формате [1,2,3,...] и [4,5,6,...]: ");
+
+                case 19: // Объединение двух массивов
+                    System.out.print("Задача 4.8. Введите массив в формате [1,2,3,...]: ");
                     String input4 = scanner.next();
-                    String[] parts3 = input4.substring(1, input4.length() - 1).split(",");
+                    if (!input4.matches("\\[(-?\\d+,?)+\\]")) { // Проверка корректности ввода массива
+                        System.out.println("Ошибка! Неверный формат массива. Ожидался формат [1,2,3,...]");
+                        break;
+                    }
+                    String[] parts3 = input4.substring(1, input4.length() - 1).split(","); // Преобразование массива из строки в integer
                     int[] arr3 = new int[parts3.length];
                     for (int i = 0; i < parts3.length; i++) {
                         arr3[i] = Integer.parseInt(parts3[i].trim());
                     }
+                    System.out.print("Теперь введите второй массив в формате [1,2,3,...]: ");
                     String input5 = scanner.next();
-                    String[] parts4 = input5.substring(1, input5.length() - 1).split(",");
+                    if (!input5.matches("\\[(-?\\d+,?)+\\]")) { // Проверка корректности ввода массива
+                        System.out.println("Ошибка! Неверный формат массива. Ожидался формат [1,2,3,...]");
+                        break;
+                    }
+                    String[] parts4 = input5.substring(1, input5.length() - 1).split(","); // Преобразование массива из строки в integer
                     int[] arr4 = new int[parts4.length];
                     for (int i = 0; i < parts4.length; i++) {
                         arr4[i] = Integer.parseInt(parts4[i].trim());
                     }
-                    int[] result3 = main.concat(arr3, arr4);
-                    System.out.println("Результат: ");
-                    for (int num : result3) {
-                        System.out.print(num + " ");
+                    int[] result3 = main.concat(arr3, arr4); // Само объединение
+                    System.out.print("Результат: [");
+                    for (int i = 0; i < result3.length; i++) {
+                        System.out.print(result3[i]);
+                        if (i < result3.length - 1) {
+                            System.out.print(",");
+                        }
                     }
-                    System.out.println();
+                    System.out.println("]");
                     break;
+
                 case 20:
                     System.out.print("Задача 4.10. Введите массив в формате [1,2,3,...]: ");
                     String input6 = scanner.next();
-                    String[] parts5 = input6.substring(1, input6.length() - 1).split(",");
+                    if (!input6.matches("\\[(-?\\d+,?)+\\]")) { // Проверка корректности ввода массива
+                        System.out.println("Ошибка! Неверный формат массива. Ожидался формат [1,2,3,...]");
+                        break;
+                    }
+                    String[] parts5 = input6.substring(1, input6.length() - 1).split(","); // Преобразование массива из строки в integer
                     int[] arr5 = new int[parts5.length];
                     for (int i = 0; i < parts5.length; i++) {
                         arr5[i] = Integer.parseInt(parts5[i].trim());
                     }
-                    int[] result4 = main.deleteNegative(arr5);
-                    System.out.println("Результат: ");
-                    for (int num : result4) {
-                        System.out.print(num + " ");
+                    int[] result4 = main.deleteNegative(arr5); // удаление негативных чисел из массива
+                    System.out.print("Результат: [");
+                    for (int i = 0; i < result4.length; i++) {
+                        System.out.print(result4[i]);
+                        if (i < result4.length - 1) {
+                            System.out.print(",");
+                        }
                     }
-                    System.out.println();
+                    System.out.println("]");
                     break;
             }
         }
