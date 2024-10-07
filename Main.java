@@ -71,12 +71,14 @@ public class Main {
                 break;
             }
         }
-        if (index == -1) {
-            System.out.println("это не день недели");
-        } else {
-            for (int i = index; i < days.length; i++) {
-                System.out.println(days[i]);
-            }
+        switch (index) {
+            case -1:
+                System.out.println("это не день недели");
+                break;
+            default:
+                for (int i = index; i < days.length; i++) {
+                    System.out.println(days[i]);
+                }
         }
     }
 
@@ -469,11 +471,15 @@ public class Main {
                     }
                     int pos = scanner.nextInt();
                     int[] result2 = main.add(arr1, x13, pos);
-                    System.out.println("Результат: ");
-                    for (int num : result2) {
-                        System.out.print(num + " ");
+                    System.out.print("Результат: ");
+                    System.out.print("[");
+                    for (int i = 0; i < result2.length; i++) {
+                        System.out.print(result2[i]);
+                        if (i < result2.length - 1) {
+                            System.out.print(", ");
+                        }
                     }
-                    System.out.println();
+                    System.out.println("]");
                     break;
 
                 case 18: // Реверс массива
